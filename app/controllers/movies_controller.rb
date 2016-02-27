@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
-
+  attr_accessor :hilite
+  attr_accessor :field
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
   end
@@ -11,8 +12,10 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @hilite = "hilite"
     if params.has_key?(:sort)
       @movies = Movie.order(params[:sort])
+      @field = params[:sort]
     else
       @movies = Movie.all
     end
