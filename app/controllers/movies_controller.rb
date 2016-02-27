@@ -65,6 +65,12 @@ class MoviesController < ApplicationController
     end
   end
 
+  def delete
+  end
+  
+  def deletes
+  end
+
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy

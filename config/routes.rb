@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'movies#index'
   get 'movies/update' => 'movies#updates'
   put 'movies(.:format)' => 'movies#updatess'
+  get 'movies/delete' => 'movies#delete'
+  put 'movies(.:format)' => 'movies#deletes'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

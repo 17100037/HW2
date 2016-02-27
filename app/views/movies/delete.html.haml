@@ -1,0 +1,17 @@
+%h1 Update Existing Movie
+
+= form_tag movies_path(@movie), :method => :put do
+
+  = label :movie, :existingTitle, 'Existing Title'
+  = text_field :movie, 'existingTitle'
+
+  = label :movie, :title, 'Title'
+  = text_field :movie, 'title'
+
+  = label :movie, :rating, 'Rating'
+  = select :movie, :rating, ['G','PG','PG-13','R','NC-17']
+
+  = label :movie, :release_date, 'Released On'
+  = text_field :movie, :release_date
+
+  = submit_tag 'Update Movie'
