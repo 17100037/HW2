@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'movies#index'
+  get 'movies/update' => 'movies#updates'
+  put 'movies(.:format)' => 'movies#updatess'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
