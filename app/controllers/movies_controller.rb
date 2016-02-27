@@ -69,6 +69,21 @@ class MoviesController < ApplicationController
   end
   
   def deletes
+    deleteVariables = params.require(:movie).permit(:title, :rating)
+    if deleteVariables[:title] != ""
+      @movie = Movie.find_by_title(deleteVariables[:title])
+      if @movie
+        @movie.destroy
+        flash[:notice] = "Movie '#{@movie.title}' deleted."
+      end
+    elsif deleteVariables[:rating] != ""
+      movies = Movie.where(:rating => deleteVariables[:rating])
+      movies.each do |toDelete|
+        toDelete.destroy
+      end
+      flash[:notice] = "All movies rated '#{deleteVariables[:rating]}' were deleted."
+    end
+      redirect_to movies_path
   end
 
   def destroy
